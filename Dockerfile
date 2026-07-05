@@ -6,4 +6,5 @@ ENV OLLAMA_MODEL=qwen2.5:7b
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
+ENTRYPOINT []
 CMD ["/start.sh"]
