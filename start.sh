@@ -2,9 +2,13 @@
 set -e
 
 ollama serve &
+SERVER_PID=$!
 
-sleep 10
+until ollama list >/dev/null 2>&1
+do
+    sleep 2
+done
 
-ollama pull ${OLLAMA_MODEL:-qwen2.5:7b}
+ollama pull "${OLLAMA_MODEL}"
 
-wait
+wait $SERVER_PID
